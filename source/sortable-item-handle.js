@@ -85,6 +85,14 @@
           scope.itemScope = itemController.scope;
           element.data('_scope', scope); // #144, work with angular debugInfoEnabled(false)
 
+          scope.index = function () {
+            for(var curScope = scope; curScope.$parent; curScope = curScope.$parent){
+              if(curScope.hasOwnProperty('$index')) {
+                return curScope.$index;
+              }
+            }
+          };
+
           scope.$watchGroup(['sortableScope.isDisabled', 'sortableScope.options.longTouch'],
               function (newValues) {
             if (isDisabled !== newValues[0]) {
