@@ -624,7 +624,6 @@
   mainModule.directive('noDrag', [function () {
     return {
       require: ['^asSortableItem', '^asSortableItemHandle'],
-      scope: true,
       restrict: 'A',
       link: function (scope, element, attrs, Controllers) {
         var itemScope = Controllers[0].scope;
