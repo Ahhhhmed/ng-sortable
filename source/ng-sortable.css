@@ -13,7 +13,7 @@
     -webkit-touch-callout: none;
 }
 
-.as-sortable-item-handle {
+.as-sortable-enabled .as-sortable-item-handle {
     cursor: move;
     cursor: -webkit-grab;
     cursor: -moz-grab;

@@ -186,8 +186,15 @@
             scope.$watch(attrs.isDisabled, function (newVal, oldVal) {
               if (!angular.isUndefined(newVal)) {
                 scope.isDisabled = newVal;
+                if(scope.isDisabled){
+                  element.removeClass('as-sortable-enabled');
+                } else {
+                  element.addClass('as-sortable-enabled');
+                }
               }
             }, true);
+          } else {
+            element.addClass('as-sortable-enabled');
           }
         }
       };
