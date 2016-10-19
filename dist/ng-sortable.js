@@ -643,7 +643,7 @@
           scope.itemScope = itemController.scope;
           element.data('_scope', scope); // #144, work with angular debugInfoEnabled(false)
 
-          scope.$watchGroup(['sortableScope.isDisabled', 'sortableScope.options.longTouch'],
+          scope.$watchGroup(['itemScope.isDisabled', 'itemScope.options.longTouch'],
               function (newValues) {
             if (isDisabled !== newValues[0]) {
               isDisabled = newValues[0];
@@ -673,10 +673,10 @@
           element.on('mouseleave', function(){scope.itemScope.DraggableOff();});
 
           createPlaceholder = function (itemScope) {
-            if (typeof scope.sortableScope.options.placeholder === 'function') {
-              return angular.element(scope.sortableScope.options.placeholder(itemScope));
-            } else if (typeof scope.sortableScope.options.placeholder === 'string') {
-              return angular.element(scope.sortableScope.options.placeholder);
+            if (typeof scope.itemScope.options.placeholder === 'function') {
+              return angular.element(scope.itemScope.options.placeholder(itemScope));
+            } else if (typeof scope.itemScope.options.placeholder === 'string') {
+              return angular.element(scope.itemScope.options.placeholder);
             } else {
               return angular.element($document[0].createElement(itemScope.element.prop('tagName')));
             }
