@@ -181,21 +181,14 @@
             scope.callbacks = callbacks;
           }, true);
 
-          // Set isDisabled if attr is set, if undefined isDisabled = false
-          if (angular.isDefined(attrs.isDisabled)) {
-            scope.$watch(attrs.isDisabled, function (newVal, oldVal) {
-              if (!angular.isUndefined(newVal)) {
-                scope.isDisabled = newVal;
-                if(scope.isDisabled){
-                  element.removeClass('as-sortable-enabled');
-                } else {
-                  element.addClass('as-sortable-enabled');
-                }
-              }
-            }, true);
-          } else {
-            element.addClass('as-sortable-enabled');
-          }
+          attrs.$observe('isDisabled', function(val){
+            scope.isDisabled = val === 'true';
+            if(scope.isDisabled){
+              element.removeClass('as-sortable-enabled');
+            } else {
+              element.addClass('as-sortable-enabled');
+            }
+          });
         }
       };
     });
